@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace P01AplikacjaZawodnicy
 {
-    public partial class Form1 : Form
+    public partial class FrmZawodnicy : Form
     {
         ManagerZawodnikow mz;
-        public Form1()
+        public FrmZawodnicy()
         {
             InitializeComponent();
         }
@@ -61,6 +61,12 @@ namespace P01AplikacjaZawodnicy
         private void rbBaza_CheckedChanged(object sender, EventArgs e)
         {
             aktywujPrzyciski();
+        }
+
+        private void btnMiasta_Click(object sender, EventArgs e)
+        {
+            FrmMiasta frmMiasta = new FrmMiasta(txtParamPolaczenia.Text);
+            frmMiasta.Show();
         }
     }
 }

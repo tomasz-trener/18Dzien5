@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FrmZawodnicy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FrmZawodnicy.Designer.cs">
+      <DependentUpon>FrmZawodnicy.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmGrupyKrajow.cs">
       <SubType>Form</SubType>
@@ -58,16 +58,27 @@
     <Compile Include="FrmGrupyKrajow.Designer.cs">
       <DependentUpon>FrmGrupyKrajow.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMiasta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMiasta.Designer.cs">
+      <DependentUpon>FrmMiasta.cs</DependentUpon>
+    </Compile>
     <Compile Include="GrupaKraju.cs" />
     <Compile Include="ManagerZawodnikow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ManagerMiast.cs" />
+    <Compile Include="Miasto.cs" />
     <Compile Include="Zawodnik.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FrmZawodnicy.resx">
+      <DependentUpon>FrmZawodnicy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGrupyKrajow.resx">
       <DependentUpon>FrmGrupyKrajow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMiasta.resx">
+      <DependentUpon>FrmMiasta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

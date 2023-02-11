@@ -1,6 +1,6 @@
 ﻿namespace P01AplikacjaZawodnicy
 {
-    partial class Form1
+    partial class FrmZawodnicy
     {
         /// <summary>
         /// Required designer variable.
@@ -36,6 +36,7 @@
             this.rbPlik = new System.Windows.Forms.RadioButton();
             this.rbBaza = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnMiasta = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtParamPolaczenia
@@ -120,11 +121,22 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Typ połączenia";
             // 
+            // btnMiasta
+            // 
+            this.btnMiasta.Location = new System.Drawing.Point(370, 115);
+            this.btnMiasta.Name = "btnMiasta";
+            this.btnMiasta.Size = new System.Drawing.Size(75, 56);
+            this.btnMiasta.TabIndex = 8;
+            this.btnMiasta.Text = "Miasta";
+            this.btnMiasta.UseVisualStyleBackColor = true;
+            this.btnMiasta.Click += new System.EventHandler(this.btnMiasta_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(457, 330);
+            this.Controls.Add(this.btnMiasta);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.rbBaza);
             this.Controls.Add(this.rbPlik);
@@ -150,6 +162,7 @@
         private System.Windows.Forms.RadioButton rbPlik;
         private System.Windows.Forms.RadioButton rbBaza;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnMiasta;
     }
 }
 
