@@ -8,17 +8,35 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Windows.Forms.VisualStyles;
 
 namespace P01AplikacjaZawodnicy
 {
 
     internal class ManagerZawodnikow
     {
-        private const string url = "http://tomaszles.pl/wp-content/uploads/2019/06/zawodnicy.txt";
+        private string url;
         private Zawodnik[] tablicaZawodnikow;
         private const string naglowek = "id_zawodnika;id_trenera;imie;nazwisko;kraj;data urodzenia;wzrost;waga";
         Zawodnik[] zawodnicyKraju;
+
+
+        public ManagerZawodnikow(string url)
+        {
+            this.url = url;
+        }
+
+        public Zawodnik[] TablicaZawodnikow
+        {
+            get { return tablicaZawodnikow; }
+        }
+
+        //public Zawodnik[] PodajZawodnikow()
+        //{
+        //    return tablicaZawodnikow;
+        //}
+
+
         public void WczytajZawodnikow()
         {
             string dane = new WebClient().DownloadString(url);

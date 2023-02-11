@@ -16,5 +16,35 @@ namespace P01AplikacjaZawodnicy
         {
             InitializeComponent();
         }
+
+        private void btnWczytaj_Click(object sender, EventArgs e)
+        {
+            ManagerZawodnikow mz = new ManagerZawodnikow(txtSciezka.Text);
+
+            mz.WczytajZawodnikow();
+
+            // tutaj chce miec tych zawodnikach
+            Zawodnik[] zawodnicy = mz.TablicaZawodnikow;
+            
+            lbDane.Items.Clear();
+            //for (int i = 0; i < zawodnicy.Length; i++)
+            //{
+            //    lbDane.Items.Add(zawodnicy[i].Imie + " " + zawodnicy[i].Nazwisko);
+            //}
+            foreach (var z in zawodnicy)
+            {
+                lbDane.Items.Add(z.Imie + " " + z.Nazwisko);
+            }
+
+
+        }
+
+        private void btnSrednieWzrosty_Click(object sender, EventArgs e)
+        {
+            FrmGrupyKrajow frmGrupyKrajow = new FrmGrupyKrajow();
+            frmGrupyKrajow.Show();
+
+
+        }
     }
 }

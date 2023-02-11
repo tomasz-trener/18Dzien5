@@ -13,7 +13,7 @@ namespace P01AplikacjaZawodnicy
         public string Imie { get; set; }
         public string Nazwisko { get; set; }
         public string Kraj { get; set; }
-        public DateTime DataUrodzenia {get; set;}
+        public DateTime DataUrodzenia {get; set;} 
         public int Wzrost { get; set; }
         public int Waga { get; set; }
     }
