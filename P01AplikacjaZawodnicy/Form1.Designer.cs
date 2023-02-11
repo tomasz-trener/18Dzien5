@@ -57,6 +57,7 @@
             // 
             // btnWczytaj
             // 
+            this.btnWczytaj.Enabled = false;
             this.btnWczytaj.Location = new System.Drawing.Point(370, 9);
             this.btnWczytaj.Name = "btnWczytaj";
             this.btnWczytaj.Size = new System.Drawing.Size(75, 23);
@@ -79,6 +80,7 @@
             // 
             // btnSrednieWzrosty
             // 
+            this.btnSrednieWzrosty.Enabled = false;
             this.btnSrednieWzrosty.Location = new System.Drawing.Point(370, 52);
             this.btnSrednieWzrosty.Name = "btnSrednieWzrosty";
             this.btnSrednieWzrosty.Size = new System.Drawing.Size(75, 57);
@@ -101,14 +103,13 @@
             // rbBaza
             // 
             this.rbBaza.AutoSize = true;
-            this.rbBaza.Checked = true;
             this.rbBaza.Location = new System.Drawing.Point(171, 5);
             this.rbBaza.Name = "rbBaza";
             this.rbBaza.Size = new System.Drawing.Size(49, 17);
             this.rbBaza.TabIndex = 6;
-            this.rbBaza.TabStop = true;
             this.rbBaza.Text = "Baza";
             this.rbBaza.UseVisualStyleBackColor = true;
+            this.rbBaza.CheckedChanged += new System.EventHandler(this.rbBaza_CheckedChanged);
             // 
             // label2
             // 

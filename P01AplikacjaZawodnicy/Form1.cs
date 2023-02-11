@@ -19,7 +19,8 @@ namespace P01AplikacjaZawodnicy
         }
 
         private void btnWczytaj_Click(object sender, EventArgs e)
-        {       
+        {
+            ustawManagerZawodnikow();
             mz.WczytajZawodnikow();
             // tutaj chce miec tych zawodnikach
             Zawodnik[] zawodnicy = mz.TablicaZawodnikow;        
@@ -39,12 +40,27 @@ namespace P01AplikacjaZawodnicy
             frmGrupyKrajow.Show();
         }
 
-        private void rbPlik_CheckedChanged(object sender, EventArgs e)
+        private void aktywujPrzyciski()
+        {
+            btnWczytaj.Enabled = btnSrednieWzrosty.Enabled = true;
+        }
+
+        private void ustawManagerZawodnikow()
         {
             if (rbBaza.Checked)
                 mz = new ManagerZawodnikow(SposobPolaczenia.BazaDanych, txtParamPolaczenia.Text);
             else
                 mz = new ManagerZawodnikow(SposobPolaczenia.Plik, txtParamPolaczenia.Text);
+        }
+
+        private void rbPlik_CheckedChanged(object sender, EventArgs e)
+        {
+            aktywujPrzyciski();
+        }
+
+        private void rbBaza_CheckedChanged(object sender, EventArgs e)
+        {
+            aktywujPrzyciski();
         }
     }
 }
