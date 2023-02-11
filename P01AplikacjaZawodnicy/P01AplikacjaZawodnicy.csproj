@@ -91,5 +91,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\P04BibliotrkaPolaczenieZBaza\P04BibliotekaPolaczenieZBaza.csproj">
+      <Project>{bf6a224a-0e8b-4919-be4a-80f8852e5dfb}</Project>
+      <Name>P04BibliotekaPolaczenieZBaza</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

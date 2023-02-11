@@ -1,4 +1,5 @@
-﻿using System;
+﻿using P04BibliotekaPolaczenieZBaza;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -12,18 +13,35 @@ using System.Windows.Forms.VisualStyles;
 
 namespace P01AplikacjaZawodnicy
 {
-
+    enum SposobPolaczenia
+    {
+        BazaDanych,
+        Plik
+    }
     internal class ManagerZawodnikow
     {
         private string url;
+        private string connString;
         private Zawodnik[] tablicaZawodnikow;
         private const string naglowek = "id_zawodnika;id_trenera;imie;nazwisko;kraj;data urodzenia;wzrost;waga";
         Zawodnik[] zawodnicyKraju;
+        SposobPolaczenia sposobPolaczenia;
 
-
-        public ManagerZawodnikow(string url)
+        /// <summary>
+        /// Tworzy nowy menager zawodników zgodnie z wybranym sposoblem połączenia
+        /// </summary>
+        /// <param name="sposobPolaczenia">Baza danych lub plik</param>
+        /// <param name="parametrPolaczenia">Adres polaczenia do bazy lub adres pliku</param>
+        /// <exception cref="Exception"></exception>
+        public ManagerZawodnikow(SposobPolaczenia sposobPolaczenia, string parametrPolaczenia)
         {
-            this.url = url;
+            this.sposobPolaczenia = sposobPolaczenia;
+            if (sposobPolaczenia == SposobPolaczenia.Plik)
+                url = parametrPolaczenia;
+            else if(sposobPolaczenia == SposobPolaczenia.BazaDanych)
+                    connString = parametrPolaczenia;
+            else
+                throw new Exception("nieznany sposób polaczenia");
         }
 
         public Zawodnik[] TablicaZawodnikow
@@ -38,6 +56,46 @@ namespace P01AplikacjaZawodnicy
 
 
         public void WczytajZawodnikow()
+        {
+            if (sposobPolaczenia == SposobPolaczenia.BazaDanych)
+                wczytajZawodnikowZBazy();
+            else if (sposobPolaczenia == SposobPolaczenia.Plik)
+                wczytajZawodnikowZpliku();
+            else
+                throw new Exception("nieznany sposób polaczenia");
+        }
+
+        private void wczytajZawodnikowZBazy()
+        {
+            PolaczenieZBaza pzb = new PolaczenieZBaza(connString);
+            object[][] wynik = pzb.WykonajZapytanie("select * from zawodnicy");
+
+            Zawodnik[] tab = new Zawodnik[wynik.Length];
+            int i = 0;
+            foreach (var tablicaKomorek in wynik)
+            {
+                Zawodnik z = new Zawodnik();
+                z.Id_zawodnika = (int)tablicaKomorek[0];
+
+                if (tablicaKomorek[1] != DBNull.Value)
+                    z.Id_trenera = (int)tablicaKomorek[1];
+
+                z.Imie = (string)tablicaKomorek[2];
+                z.Nazwisko = (string)tablicaKomorek[3];
+                z.Kraj = (string)tablicaKomorek[4];
+                z.DataUrodzenia = (DateTime)tablicaKomorek[5];
+                z.Wzrost = (int)tablicaKomorek[6];
+                z.Waga = (int)tablicaKomorek[7];
+
+                tab[i++]= z; 
+            }
+
+
+            // teraz musimy przerobć wynik na tablicaZawodnikow;
+            tablicaZawodnikow = tab;
+        }
+
+        private void wczytajZawodnikowZpliku()
         {
             string dane = new WebClient().DownloadString(url);
             string[] separatory = { "\r\n" };
