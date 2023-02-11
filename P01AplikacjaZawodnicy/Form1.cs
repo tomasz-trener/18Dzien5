@@ -41,7 +41,11 @@ namespace P01AplikacjaZawodnicy
 
         private void btnSrednieWzrosty_Click(object sender, EventArgs e)
         {
-            FrmGrupyKrajow frmGrupyKrajow = new FrmGrupyKrajow();
+            ManagerZawodnikow mz = new ManagerZawodnikow(txtSciezka.Text);
+            
+            GrupaKraju[] grupy= mz.PodajSredniWzrostZawodnikowDlaKazdegoKraju();
+
+            FrmGrupyKrajow frmGrupyKrajow = new FrmGrupyKrajow(grupy);
             frmGrupyKrajow.Show();
 
 

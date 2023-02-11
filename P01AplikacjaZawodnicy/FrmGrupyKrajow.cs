@@ -12,9 +12,14 @@ namespace P01AplikacjaZawodnicy
 {
     public partial class FrmGrupyKrajow : Form
     {
-        public FrmGrupyKrajow()
+        public FrmGrupyKrajow(GrupaKraju[] zawodnicy)
         {
             InitializeComponent();
+
+            foreach (var z in zawodnicy)
+            {
+                lbDane.Items.Add(z.Kraj + " " + z.SredniWzrost);
+            }
         }
     }
 }

@@ -82,7 +82,7 @@ namespace P01AplikacjaZawodnicy
             return (tablicaZnalezionych.Length).ToString();
         }
 
-        public string PodajSredniWzrostZawodnikowDlaKazdegoKraju()
+        public GrupaKraju[] PodajSredniWzrostZawodnikowDlaKazdegoKraju()
         {
             WczytajZawodnikow();
             List<string> kraje = new List<string>();    
@@ -97,7 +97,8 @@ namespace P01AplikacjaZawodnicy
             tablicaKrajow= kraje.ToArray();
 
 
-            StringBuilder sb = new StringBuilder();
+
+            List<GrupaKraju> grupy = new List<GrupaKraju>();
             for (int i = 0; i < tablicaKrajow.Length; i++)
             {
                 double sumaWzrostu = 0;
@@ -112,10 +113,14 @@ namespace P01AplikacjaZawodnicy
                 }
 
                 double sredni = Math.Round((sumaWzrostu / liczbaZawodnikow), 2);
-                sb.AppendLine("Dla " + tablicaKrajow[i] + " średni wzrost zawodników to " + sredni);
+                GrupaKraju gk = new GrupaKraju();
+                gk.Kraj = tablicaKrajow[i];
+                gk.SredniWzrost = sredni;
+                grupy.Add(gk);
+                //sb.AppendLine("Dla " + tablicaKrajow[i] + " średni wzrost zawodników to " + sredni);
             }
             
-            return sb.ToString();
+            return grupy.ToArray();
             
         }
 
