@@ -35,8 +35,6 @@ namespace P01AplikacjaZawodnicy
             {
                 lbDane.Items.Add(z.Imie + " " + z.Nazwisko);
             }
-
-
         }
 
         private void btnSrednieWzrosty_Click(object sender, EventArgs e)
@@ -47,8 +45,6 @@ namespace P01AplikacjaZawodnicy
 
             FrmGrupyKrajow frmGrupyKrajow = new FrmGrupyKrajow(grupy);
             frmGrupyKrajow.Show();
-
-
         }
     }
 }
